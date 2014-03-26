@@ -18,6 +18,10 @@ use Application\Sonata\DatagridBundle\Pager\PagerInterface;
 
 use Symfony\Component\Form\FormBuilder;
 
+class TestEntity {
+
+}
+
 /**
  * @author Andrej Hudec <pulzarraider@gmail.com>
  */
@@ -79,7 +83,7 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
         $this->formBuilder->expects($this->any())
             ->method('add')
             ->will($this->returnCallback(function($name, $type, $options) use (& $formTypes, $eventDispatcher, $formFactory) {
-                $formTypes[$name] = new FormBuilder($name, 'Sonata\AdminBundle\Tests\Fixtures\Entity\Form\TestEntity', $eventDispatcher,  $formFactory, $options);
+                $formTypes[$name] = new FormBuilder($name, 'Application\Sonata\DatagridBundle\Tests\Datagrid\TestEntity', $eventDispatcher,  $formFactory, $options);
 
                 return null;
             }));

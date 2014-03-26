@@ -11,11 +11,12 @@
 
 namespace Application\Sonata\DatagridBundle\Controller;
 
-use Application\Sonata\DatagridBundle\Elastica\Filter\RangeFilter;
-use Application\Sonata\DatagridBundle\Elastica\QueryBuilder;
 use Application\Sonata\DatagridBundle\Datagrid\Datagrid;
-use Application\Sonata\DatagridBundle\Elastica\Pager;
-use Application\Sonata\DatagridBundle\Elastica\ProxyQuery;
+
+use Application\Sonata\ElasticaBundle\Datagrid\Filter\RangeFilter;
+use Application\Sonata\ElasticaBundle\Datagrid\QueryBuilder;
+use Application\Sonata\ElasticaBundle\Datagrid\Pager;
+use Application\Sonata\ElasticaBundle\Datagrid\ProxyQuery;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -43,7 +44,7 @@ class SearchController extends Controller
 
         // Create a range filter
         $rangeFilter = new RangeFilter();
-        $rangeFilter->setValue(50);
+        $rangeFilter->setValue(10);
         $rangeFilter->initialize('sonata.elastica.range.filter', array(
             'field_name' => 'id',
             'operator'   => '>'

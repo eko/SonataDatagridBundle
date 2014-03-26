@@ -157,6 +157,6 @@ class BaseProxyQuery
      */
     public function __call($name, $args)
     {
-        return call_user_func_array(array($this->query, $name), $args);
+        return call_user_func_array(array($this->queryBuilder, $name), $args);
     }
 }

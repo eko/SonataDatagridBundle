@@ -9,14 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\Controller;
+namespace Sonata\DatagridBundle\Controller;
 
-use Application\Sonata\DatagridBundle\Datagrid\Datagrid;
+use Sonata\Component\Currency\Currency;
+use Sonata\DatagridBundle\Datagrid\Datagrid;
 
-use Application\Sonata\ElasticaBundle\Datagrid\Filter\RangeFilter;
-use Application\Sonata\ElasticaBundle\Datagrid\QueryBuilder;
-use Application\Sonata\ElasticaBundle\Datagrid\Pager;
-use Application\Sonata\ElasticaBundle\Datagrid\ProxyQuery;
+use Sonata\ElasticaBundle\Datagrid\Filter\RangeFilter;
+use Sonata\ElasticaBundle\Datagrid\QueryBuilder;
+use Sonata\ElasticaBundle\Datagrid\Pager;
+use Sonata\ElasticaBundle\Datagrid\ProxyQuery;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,34 +39,39 @@ class SearchController extends Controller
         $manager = $this->get('fos_elastica.manager.orm');
 
         $queryBuilder = new QueryBuilder('ApplicationSonataProductBundle:Product', $manager);
-        $queryBuilder->setCriteria(array('name' => 'Dummy'));
+        $queryBuilder->setCriteria(array('name' => '*'));
 
         $proxyQuery = new ProxyQuery($queryBuilder);
 
-        // Create a range filter
-        $rangeFilter = new RangeFilter();
-        $rangeFilter->setValue(10);
-        $rangeFilter->initialize('sonata.elastica.range.filter', array(
-            'field_name' => 'id',
-            'operator'   => '>'
-        ));
-
         // Create datagrid
-        $datagrid = new Datagrid($proxyQuery, new Pager(), $formBuilder, array(
-            '_page'       => 1,
-            '_per_page'   => 5,
+        $pager = new Pager();
+
+        $datagrid = new Datagrid($proxyQuery, $pager, $formBuilder, array(
+            '_page'       => $this->getRequest()->query->get('page', 1),
+            '_per_page'   => 6,
             '_sort_by'    => 'id',
             '_sort_order' => 'asc'
         ));
 
+        // Create a range filter
+        $rangeFilter = new RangeFilter();
+        $rangeFilter->initialize('sonata.elastica.range.filter', array(
+            'field_name' => 'id',
+            'min'        => 5,
+            'max'        => 50
+        ));
+
         $datagrid->addFilter($rangeFilter);
 
-        $names = array();
+        // Create fake currency for e-commerce rendering
+        $currency = new Currency();
+        $currency->setLabel('EUR');
 
-        foreach ($datagrid->getResults() as $product) {
-            $names[] = $product->getName();
-        }
-
-        return new JsonResponse($names);
+        return $this->render('SonataDatagridBundle:Search:results.html.twig', array(
+            'results'  => $datagrid->getResults(),
+            'pager'    => $pager,
+            'currency' => $currency,
+            'route'    => 'sonata_datagrid_search'
+        ));
     }
 }

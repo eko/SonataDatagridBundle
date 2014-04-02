@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\Datagrid;
+namespace Sonata\DatagridBundle\Datagrid;
 
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\CallbackTransformer;
 
-use Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
-use Application\Sonata\DatagridBundle\Pager\PagerInterface;
-use Application\Sonata\DatagridBundle\Filter\FilterInterface;
+use Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
+use Sonata\DatagridBundle\Pager\PagerInterface;
+use Sonata\DatagridBundle\Filter\FilterInterface;
 
 class Datagrid implements DatagridInterface
 {

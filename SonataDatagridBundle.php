@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle;
+namespace Sonata\DatagridBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

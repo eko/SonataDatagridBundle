@@ -10,7 +10,7 @@
  *
  */
 
-namespace Application\Sonata\DatagridBundle\Pager;
+namespace Sonata\DatagridBundle\Pager;
 
 interface PagerInterface
 {

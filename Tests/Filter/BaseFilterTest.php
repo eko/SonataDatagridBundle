@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\Tests\Filter;
+namespace Sonata\DatagridBundle\Tests\Filter;
 
-use Application\Sonata\DatagridBundle\Filter\BaseFilter;
-use Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
+use Sonata\DatagridBundle\Filter\BaseFilter;
+use Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
 
 class FilterTest_Filter extends BaseFilter
 {

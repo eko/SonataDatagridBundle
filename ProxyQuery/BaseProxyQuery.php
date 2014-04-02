@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\ProxyQuery;
+namespace Sonata\DatagridBundle\ProxyQuery;
 
 /**
  * This class try to unify the query usage between different models

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\ProxyQuery;
+namespace Sonata\DatagridBundle\ProxyQuery;
 
 /**
  * Interface used by the Datagrid to build the query

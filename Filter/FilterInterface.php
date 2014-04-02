@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\Filter;
+namespace Sonata\DatagridBundle\Filter;
 
-use Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
+use Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
 
 /**
  * Interface FilterInterface

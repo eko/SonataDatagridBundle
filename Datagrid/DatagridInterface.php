@@ -10,11 +10,11 @@
  *
  */
 
-namespace Application\Sonata\DatagridBundle\Datagrid;
+namespace Sonata\DatagridBundle\Datagrid;
 
-use Application\Sonata\DatagridBundle\Filter\FilterInterface;
-use Application\Sonata\DatagridBundle\Pager\PagerInterface;
-use Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
+use Sonata\DatagridBundle\Filter\FilterInterface;
+use Sonata\DatagridBundle\Pager\PagerInterface;
+use Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface;
 
 interface DatagridInterface
 {

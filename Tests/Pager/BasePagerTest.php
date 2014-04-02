@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Application\Sonata\DatagridBundle\Tests\Pager;
+namespace Sonata\DatagridBundle\Tests\Pager;
 
-use Application\Sonata\DatagridBundle\Pager\BasePager;
+use Sonata\DatagridBundle\Pager\BasePager;
 
 /**
  * @author Andrej Hudec <pulzarraider@gmail.com>
@@ -25,7 +25,7 @@ class PagerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->pager = $this->getMockForAbstractClass('Application\Sonata\DatagridBundle\Pager\BasePager');
+        $this->pager = $this->getMockForAbstractClass('Sonata\DatagridBundle\Pager\BasePager');
     }
 
     /**
@@ -137,7 +137,7 @@ class PagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetQuery()
     {
-        $query = $this->getMock('Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
+        $query = $this->getMock('Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
 
         $this->pager->setQuery($query);
         $this->assertEquals($query, $this->pager->getQuery());
@@ -359,7 +359,7 @@ class PagerTest extends \PHPUnit_Framework_TestCase
 
         $this->callMethod($this->pager, 'setNbResults', array(3));
 
-        $query = $this->getMock('Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
+        $query = $this->getMock('Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
 
         $query->expects($this->any())
             ->method('setFirstResult')
@@ -490,7 +490,7 @@ class PagerTest extends \PHPUnit_Framework_TestCase
 
         $this->callMethod($this->pager, 'setNbResults', array(3));
 
-        $query = $this->getMock('Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
+        $query = $this->getMock('Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
 
         $query->expects($this->any())
             ->method('setFirstResult')
@@ -551,7 +551,7 @@ class PagerTest extends \PHPUnit_Framework_TestCase
 
         $this->callMethod($this->pager, 'setNbResults', array(3));
 
-        $query = $this->getMock('Application\Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
+        $query = $this->getMock('Sonata\DatagridBundle\ProxyQuery\ProxyQueryInterface');
 
         $query->expects($this->any())
             ->method('setFirstResult')

@@ -9,37 +9,31 @@ file that was distributed with this source code.
 
 #}
 
-{% block num_results %}
-    <div>
-        {% transchoice pager.nbresults with {'%count%': pager.nbresults} from 'SonataAdminBundle' %}list_results_count{% endtranschoice %}
-    </div>
-{% endblock %}
-
 {% block pager_links %}
-    <ul class="pagination">
-        {% if pager.page > 2  %}
+    <ul class="pagination{% if pager_class is defined %} {{ pager_class }}{% endif %}">
+        {% if datagrid.pager.page > 2  %}
             <li><a href="{{ url(route, app.request.query.all|merge({page: 1})) }}" title="{{ 'link_first_pager'|trans({}, 'SonataAdminBundle') }}">&laquo;</a></li>
         {% endif %}
 
-        {% if pager.page != pager.previouspage %}
-            <li><a href="{{ url(route, app.request.query.all|merge({page: pager.previouspage})) }}" title="{{ 'link_previous_pager'|trans({}, 'SonataAdminBundle') }}">&lsaquo;</a></li>
+        {% if datagrid.pager.page != datagrid.pager.previouspage %}
+            <li><a href="{{ url(route, app.request.query.all|merge({page: datagrid.pager.previouspage})) }}" title="{{ 'link_previous_pager'|trans({}, 'SonataAdminBundle') }}">&lsaquo;</a></li>
         {% endif %}
 
         {# Set the number of pages to display in the pager #}
-        {% for page in pager.getLinks(10) %}
-            {% if page == pager.page %}
+        {% for page in datagrid.pager.getLinks(5) %}
+            {% if page == datagrid.pager.page %}
                 <li class="active"><a href="{{ url(route, app.request.query.all|merge({page: page})) }}">{{ page }}</a></li>
             {% else %}
                 <li><a href="{{ url(route, app.request.query.all|merge({page: page})) }}">{{ page }}</a></li>
             {% endif %}
         {% endfor %}
 
-        {% if pager.page != pager.nextpage %}
-            <li><a href="{{ url(route, app.request.query.all|merge({page: pager.nextpage})) }}" title="{{ 'link_next_pager'|trans({}, 'SonataAdminBundle') }}">&rsaquo;</a></li>
+        {% if datagrid.pager.page != datagrid.pager.nextpage %}
+            <li><a href="{{ url(route, app.request.query.all|merge({page: datagrid.pager.nextpage})) }}" title="{{ 'link_next_pager'|trans({}, 'SonataAdminBundle') }}">&rsaquo;</a></li>
         {% endif %}
 
-        {% if pager.page != pager.lastpage and pager.lastpage != pager.nextpage %}
-            <li><a href="{{ url(route, app.request.query.all|merge({page: pager.lastpage})) }}" title="{{ 'link_last_pager'|trans({}, 'SonataAdminBundle') }}">&raquo;</a></li>
+        {% if datagrid.pager.page != datagrid.pager.lastpage and datagrid.pager.lastpage != datagrid.pager.nextpage %}
+            <li><a href="{{ url(route, app.request.query.all|merge({page: datagrid.pager.lastpage})) }}" title="{{ 'link_last_pager'|trans({}, 'SonataAdminBundle') }}">&raquo;</a></li>
         {% endif %}
     </ul>
 {% endblock %}
